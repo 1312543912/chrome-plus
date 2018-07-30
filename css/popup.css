@@ -1,0 +1,10 @@
+.log-box {
+  overflow: auto;
+  border: 1px solid #cccccc;
+}
+
+.box {
+  width: 520px;
+  height: 300px;
+  font-size: 14px;
+}
