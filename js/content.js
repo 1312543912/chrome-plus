@@ -1,10 +1,9 @@
 window.addEventListener("message", function(e) {
   const type = e.data.type;
   if (type === 'xyinfo') {
-    chrome.runtime.sendMessage({"xyinfo": e.data.info}, function (response) {
-      return;
-    }
-  )
+    chrome.runtime.sendMessage({"type":"xyinfo", "data": e.data.info}, function (response) {return;})
+  } else if (type === 'bsinfo') {
+    chrome.runtime.sendMessage({"type":"bsinfo", "data": e.data.info}, function (response){return;})
   }
 }, false);
 
