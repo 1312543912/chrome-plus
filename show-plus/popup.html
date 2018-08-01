@@ -1,26 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>LOGGER-HELPER</title>
-  <link rel="stylesheet" type="text/css" href="css/popup.css"/>
+  <link rel="stylesheet" type="text/css" href="css/popup.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
-  <h3>XYVP Helper:日志</h3>
-  <div class="log-title">SKJ关闭信息：</div>
-  <div class="log-box">
-      <div class="box" id="skj-message">
-
-      </div>
+  <h3>统计插件</h3>
+  <div class="content">
+    <table class="table" style="width:400px; height:500px">
+      <caption>详细信息</caption>
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>次数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>点赞</td>
+          <td id="like"></td>
+        </tr>
+        <tr>
+          <td>评论</td>
+          <td id="comment"></td>
+        </tr>
+        <tr>
+          <td>分享</td>
+          <td id="share"></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="log-title">Bootstrap节点信息：</div>
-  <div class="log-box">
-      <div class="box" id="bs-message">
-
-      </div>
-  </div>
+ <div class="footer">
+  <button id="clear" type="button" class="btn btn-danger">清空信息</button>
+  <button id="showdata" type="button" class="btn btn-success">查看信息</button>
+ </div>
 </body>
 <script type="text/javascript" src="js/popup.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </html>

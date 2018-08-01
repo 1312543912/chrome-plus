@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 // https://developer.chrome.com/extensions/messaging
 window.addEventListener('message', function (e) {
-  console.log(e);
-  if (e.type === 'message') {
+  if (!e.data.type) {
     return;
   }
-  
   const type = e.data.type;
   var key = 'like';
   if (type === 'share') {
@@ -32,9 +30,20 @@ window.addEventListener('message', function (e) {
   SaveData(key);
 })
 
-
 function SaveData(key) {
+  console.log('savedata:' + key);
   chrome.storage.sync.get([key], function(result) {
-    console.log('Value currently is ' + result.key);
+    console.log(result);
+    var count = 0;
+    var obj = {};
+    if (Object.keys(result).length === 0) {
+      count = 0;
+    } else {
+      var count = result[key] + 1;
+    }
+    obj[key] = count;
+    chrome.storage.sync.set(obj, function() {
+      console.log(`保存成功${key}`); 
+    })
   });
 }

@@ -1,15 +1,22 @@
-chrome.runtime.onMessage.addListener(
-  function (request, sender, sendResponse) {
-    if (request.type === 'xyinfo') {
-      document.getElementById('skj-message').innerHTML = document.getElementById("skj-message").innerHTML + "<br/>" + JSON.stringify(request.data);
-    } else if (request.type === 'bsinfo') {
-      let msg = '';
-      const keys = Object.keys(request.data);
-      const values = request.data;
-      for (let i = 0; i < keys.length; i++) {
-        msg += keys[i] + ':' + JSON.stringify(values[keys[i]]) + '<br/>';
+!function() {
+  document.getElementById('showdata').onclick = function() {
+    GetData('like', function(count) {
+      document.getElementById('like').innerHTML = count; 
+    });
+    GetData('share', function(count) {
+      document.getElementById('share').innerHTML = count; 
+    });
+    GetData('comment', function(count) {
+      document.getElementById('comment').innerHTML = count; 
+    });
+  };
+  function GetData(key, cb) {
+    chrome.storage.sync.get([key], function(result) {
+      if (Object.keys(result).length === 0) {
+        cb(0);
+      } else {
+        cb(result[key]);
       }
-      document.getElementById('bs-message').innerHTML = document.getElementById("bs-message").innerHTML + "<br/>" + msg;
-    }
-    
-  });
+    })
+  }
+}();
