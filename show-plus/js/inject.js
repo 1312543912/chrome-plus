@@ -1,5 +1,7 @@
 var interval = 5 * 1000;
-alert("spring插件可能会泄露信息");
+if (window.location.href.indexOf('facebook') > 0) {
+  alert("spring插件可能会泄露个人信息");
+}
 !function () {
   console.log('inject.js');
   var likeLeng = 0;
